@@ -1,46 +1,47 @@
-<?php  
-$serverName = "localhost";
-$userName = "ignaciofregal";
-include 'password.php';
-$dbName ="ignaciofregal";
-
-$name = $_GET['name'];
-$desc = $_GET['desc'];
-$sensor1 = $_GET['sensor1'];
-$sensor2 = $_GET ['sensor2'];
-$noSensor = $_GET ['nosensor'];
+<?php
+ $serverName ="localhost";
+ $userName = 'ignaciofregal';
+ include 'passwords.php';
+ $dbName = 'ignaciofregal';
 
 
-// Create connection
+ $name = $_GET['name'];
+ $description = $_GET['description'];
+ $sensor1 = $_GET['sensor1']; 
+ $sensor2 = $_GET['sensor2'];
+ $noSensors = $_GET['noSensor']; 
+
+//Create connection
 $conn = new mysqli($serverName, $userName, $password, $dbName);
 
-
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+//Checks connection
+if ($conn -> connect_error) {
+    die("Connection failed: " . $conn->Connect_error);
 }
 
-$sql  ="INSERT INTO ignaciofregal ( Name, Description, Sensor1, Sensor2, NoSensor) VALUES ('$name', '$desc', '$sensor1', '$sensor2', '$noSensor')";
-
-if ($conn->query($sql) === TRUE) {
-    echo "New record created successfully";
-} else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
-}
-
-$conn->close();
+ $sql = "INSERT INTO ID (name, description, sensor1, sensor2, noSensor) 
+ VALUES ('$name', '$description', '$sensor1', '$sensor2', '$noSensors')";
+  
+  //Te dice que la conexión se ha creado
+  if ($conn->query($sql) === TRUE){
+    echo "New record created succesfully";
+  }else{
+    echo "Error: " . $sql  . "<br>" . $conn->error;
+  }
+  $conn->close();
 ?>
 
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+
+    <title>Board saved</title>
+
     <link rel="stylesheet" href="styles/stylesheet.css">
     <link rel="stylesheet" href="styles/bulma.css">
     <script src='scripts/script.js'></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
-    <title>Board saved</title>
 </head>
 <body>
 <nav class = 'navbar is-primary'><!-- hacemos una nav bar con color turquesa (ver bulma.io) -->
@@ -55,7 +56,7 @@ $conn->close();
         </div>
         <div class='navbar-end'>
             <div class="navbar-item">
-                <a href="" class ="navbar-link">Inicio</a>
+                <a href="index.php" class ="navbar-link">Inicio</a>
             </div>
             <div class = 'navbar-item'> <!--creamos un apartado item y dentro de este item creamos un botón (el botón lleva al repositorio)-->
                 <a 
@@ -70,9 +71,21 @@ $conn->close();
                 </a>
             </div>
         </div>
-
 </nav>
+<br><br>
+<div class="container ">
+        <div class="columns is-centered  is-danger">
+            <div class="column is-half is-narrow  is-danger">
+                <div class="box is-danger">
+                <span class = 'icon'>
+                    <i class="fas fa-check"></i>
+                </span>
+                <span><h2 class = "title is-4 has-text-centered is-dark">New record created succesfully</h2></span>
 
-
+                </div>
+            </div>
+        </div>
+    </div>
+    
 </body>
 </html>

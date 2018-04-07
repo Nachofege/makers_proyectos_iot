@@ -9,14 +9,14 @@ function desactivarSensores() {
 	sensor2.disabled = !sensor2.disabled;
 }
 function createNewBoard() {
-	var boardName = document.getElementById('board-name').textContent;
+	var boardName = document.getElementById('board-name').value;
 	//coge el elmento de nombre id = 'board-name'
-	var boardDesc = document.getElementById('board-desc').textContent;
+	var boardDesc = document.getElementById('board-desc').value;
 	//coge la descripción
 
 	if (noSensor == false) {
-		var sensor1 = document.getElementById('sensor-1').textContent;
-		var sensor2 = document.getElementById('sensor-2').textContent;
+		var sensor1Name = document.getElementById('sensor-1').value;
+		var sensor2Name = document.getElementById('sensor-2').value;
 	} else {
 		var sensor1Name = '';
 		var sensor2Name = '';
